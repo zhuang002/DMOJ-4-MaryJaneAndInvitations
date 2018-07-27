@@ -37,46 +37,35 @@ public class MaryJaneAndInvitations {
         int i=0;
         int j=0;
         int k=-1;
+        int iType;
         for (i=0;i<sTypes.length();i++) {
             
             char c=sTypes.charAt(i);
             switch (c) {
                 case 'A':
-                    if (k!=-1){
-                        types[k]=0;
-                        k=-1;
-                    } else {
-                        if (j>n-1) break;
-                        types[j]=0;
-                        j++;
-                    }
+                    iType=0;
                     break;
                 case 'O':
-                    if (k!=-1){
-                        types[k]=1;
-                        k=-1;
-                    } else {
-                        if (j>n-1) break;
-                        types[j]=1;
-                        j++;
-                    }
+                    iType=1;
                     break;
                 case 'R':
-                    if (k!=-1){
-                        types[k]=2;
-                        k=-1;
-                    } else {
-                        if (j>n-1) break;
-                        types[j]=2;
-                        j++;
-                    }
+                    iType=2;
                     break;
                 case 'X':
                     if (k==-1) k=j-1;
                     else k--;
-                    break;
+                    continue;
                 default:
-                    break;
+                    continue;
+            }
+            
+            if (k!=-1){
+                types[k]=iType;
+                k=-1;
+            } else {
+                if (j>n-1) break;
+                types[j]=iType;
+                j++;
             }
         }
         return types;
